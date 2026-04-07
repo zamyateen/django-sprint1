@@ -26,7 +26,8 @@ posts = [
             'Я немного приободрился, хотя печаль о погибших товарищах не '
             'покидала меня. Мне всё думалось, что, останься мы на корабле, '
             'мы непременно спаслись бы. Теперь из его обломков мы могли бы '
-            'построить баркас, на котором и выбрались бы из этого гиблого места.'
+            'построить баркас, на котором и выбрались бы из '
+            'этого гиблого места.'
         ),
     },
     {
@@ -44,12 +45,16 @@ posts = [
     },
 ]
 
+
 def index(request):
     return render(request, 'blog/index.html', {'posts': posts})
+
 
 def post_detail(request, id):
     post = posts[id]
     return render(request, 'blog/detail.html', {'post': post})
 
+
 def category_posts(request, category_slug):
-    return render(request, 'blog/category.html', {'category_slug': category_slug})
+    context = {'category_slug': category_slug}
+    return render(request, 'blog/category.html', context)
